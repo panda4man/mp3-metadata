@@ -11,6 +11,10 @@ class Mp3 extends Model
 
     protected $fillable = ['source_disk', 'source_path', 'dest_path', 'dest_disk', 'duration'];
 
+    protected $casts = [
+        'duration' => 'decimal:4'
+    ];
+
     public static function newDefault(array $attributes): self
     {
         return (new self)->fill(array_merge([
