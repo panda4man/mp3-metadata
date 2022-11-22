@@ -16,6 +16,7 @@ class MetadataController extends Controller
     {
         //assuming the s3 disk for now
         $remote_url  = request()->get('url');
+        $remote_url  = urldecode($remote_url);
         $refresh     = request()->get('refresh');
         $remote_path = RemoteUrlHelper::getPath($remote_url);
         $mp3_record  = Mp3::where('source_path', $remote_path)->first();
