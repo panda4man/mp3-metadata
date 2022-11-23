@@ -16,6 +16,15 @@ class MetadataController extends Controller
     {
         //assuming the s3 disk for now
         $remote_url  = request()->get('url');
+
+        if(empty($remote_url)) {
+            return response()->json([
+                'errors' => [
+                    'url' => 'URL is required'
+                ]
+            ], 400);
+        }
+
         $remote_url  = urldecode($remote_url);
         $refresh     = request()->get('refresh');
         $remote_path = RemoteUrlHelper::getPath($remote_url);
