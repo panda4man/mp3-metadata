@@ -15,9 +15,9 @@ class MetadataController extends Controller
     public function __invoke()
     {
         //assuming the s3 disk for now
-        $remote_url  = request()->get('url');
+        $remote_url = request()->get('url');
 
-        if(empty($remote_url)) {
+        if (empty($remote_url)) {
             return response()->json([
                 'errors' => [
                     'url' => 'URL is required'
